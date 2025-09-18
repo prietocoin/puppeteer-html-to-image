@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   puppeteer:
-    image: buildkite/puppeteer:18
+    ghcr.io/puppeteer/puppeteer:latest
     ports:
       - "4000:4000"
     volumes:
