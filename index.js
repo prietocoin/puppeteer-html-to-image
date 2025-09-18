@@ -1,7 +1,8 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
 const app = express();
-const port = 3000;
+
+const port = 4000;
 
 app.use(express.json({ limit: '50mb' }));
 
@@ -24,8 +25,8 @@ app.post('/capture', async (req, res) => {
         res.setHeader('Content-Type', 'image/png');
         res.send(imageBuffer);
     } catch (error) {
-        console.error('Error during HTML to image conversion:', error);
-        res.status(500).send('Something went wrong during the conversion.');
+        console.error('Error durante la conversión de HTML a imagen:', error);
+        res.status(500).send(error.message); // Envía el mensaje de error de vuelta a n8n
     } finally {
         if (browser) {
             await browser.close();
