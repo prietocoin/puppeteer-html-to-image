@@ -1,6 +1,10 @@
-FROM node:18-bullseye-slim
+FROM buildkite/puppeteer:18
+
 WORKDIR /app
+
 COPY package.json .
 RUN npm install
+
 COPY . .
+
 CMD ["node", "index.js"]
