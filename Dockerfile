@@ -3,14 +3,18 @@ FROM node:18-bullseye-slim
 WORKDIR /app
 
 COPY package.json .
-RUN npm install --unsafe-perm=true
+
+RUN npm install
 
 COPY . .
 
 RUN apt-get update && apt-get install -y \
     chromium \
     libnss3 \
+    libnss3-dev \
+    libgconf-2-4 \
     libasound2 \
+    libatspi2.0-0 \
     libatk-bridge2.0-0 \
     libgtk-3-0 \
     libxss1 \
